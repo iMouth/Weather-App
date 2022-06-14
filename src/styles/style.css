@@ -22,9 +22,7 @@
   background-color: #ffffff;
   height: 48rem;
   width: 60rem;
-}
-
-img {
-  width: 40rem;
-  height: auto;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
 }

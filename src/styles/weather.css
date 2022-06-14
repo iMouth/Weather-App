@@ -1,0 +1,61 @@
+.weather-info {
+  display: flex;
+}
+
+.img-holder {
+  margin: 2rem;
+  display: flex;
+}
+
+.img-holder > img {
+  /* max-width: 100%;
+    max-height: 100%; */
+  width: 500px;
+  height: 400px;
+  border-radius: 0.5rem;
+}
+
+.info-holder {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.weather {
+  display: flex;
+}
+
+.weather > img {
+  height: 70px;
+  width: auto;
+}
+
+.weather > p {
+  margin: auto 0 auto;
+}
+
+.temp {
+  display: flex;
+  flex-direction: column;
+}
+
+.temp > p {
+  margin: 0;
+  font-size: 2rem;
+  margin: auto;
+}
+
+.temp-variance {
+  display: flex;
+}
+
+.temp-variance > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.temp-variance > div > img {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+}
