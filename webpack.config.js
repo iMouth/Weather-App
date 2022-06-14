@@ -15,11 +15,13 @@ module.exports = {
       title: "Weather App",
       favicon: "./src/assets/cloud.png",
       template: "./src/template.html",
-    }), // svg works too!
+      hash: true,
+    }), 
   ],
   output: {
-    filename: "[name].bundle.js",
+    filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist"),
+    assetModuleFilename: 'assets/[name][ext]',
     clean: true,
   },
   module: {
@@ -31,6 +33,11 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
+        
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
       },
     ],
   },

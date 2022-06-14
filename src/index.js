@@ -27,10 +27,9 @@ async function getLocations(city) {
         return locations
     }
     catch (err) {
-        console.log(err);
+        console.log("Error: " + err.message);
     }
 }
-
 
 async function searchClick() {
     let city = "seoul" // TODO: get search from DOM
@@ -65,10 +64,26 @@ async function cityClick(city) {
             weatherIcon: cityJSON.weather[0].icon,
         }
         return info;
-    }
-    catch (err) {
-        console.log(err)
+    } catch (err) {
+        console.log("Error: " + err.message);
     }
 }
 
 searchClick();
+
+window.onload = async () => {
+    try {
+        const getCoords = async () => {
+            const pos = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            });        
+            return {
+                long: pos.coords.longitude,
+                lat: pos.coords.latitude,            
+            };
+        };
+        const coords = await getCoords();
+    } catch (err) {
+        console.log("Error: " + err.message);
+    }
+}
