@@ -1,7 +1,7 @@
 .location-info {
   display: flex;
   justify-content: space-between;
-  margin: 0 3rem;
+  margin: 2rem 3rem;
 }
 
 .location-holder {
