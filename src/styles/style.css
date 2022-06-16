@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Orbitron&family=Urbanist:wght@300;400;700&display=swap");
+
 :root {
   --clear-grad: linear-gradient(to top right, #85cdd8 25%, #d1d9d9); /* aquamarine */
   --cloudy-grad: linear-gradient(to top right, #597e93 25%, #698181);
@@ -15,6 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Urbanist", sans-serif;
 }
 
 .holding-box {

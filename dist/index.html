@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-  <link rel="icon" href="cloud.png?f69ec17f7083a8c09d27"><script defer src="runtime.f69ec17f7083a8c09d27.js?f69ec17f7083a8c09d27"></script><script defer src="index.f69ec17f7083a8c09d27.js?f69ec17f7083a8c09d27"></script></head>
+  <link rel="icon" href="cloud.png?038a996ad37b0684e526"><script defer src="runtime.038a996ad37b0684e526.js?038a996ad37b0684e526"></script><script defer src="index.038a996ad37b0684e526.js?038a996ad37b0684e526"></script></head>
   <body>
     <div class="container">
       <div class="holding-box">
@@ -17,18 +17,16 @@
             <div class="top-info">
               <div class="weather">
                 <img src="assets/cloudy.png" alt="weather icon" />
-                <p>Clouds</p>
+                <p>overcast clouds</p>
               </div>
               <div class="temp">
                 <p>64 °F</p>
                 <div class="temp-variance">
                   <div class="temp-low">
-                    <!--low icon-->
                     <img src="assets/arrow.png" alt="blue down arrow" />
                     <p>16 °F</p>
                   </div>
                   <div class="temp-high">
-                    <!--high icon-->
                     <p>16 °F</p>
                     <img src="assets/arrow.png" alt="red up arrow" />
                   </div>
@@ -36,40 +34,44 @@
               </div>
             </div>
             <div class="bottom-info">
-              <div class="temp-feel">
-                <div class="feel-img">
-                  <img src="assets/thermometer.png" alt="Thermometer" />
+              <div>
+                <div class="temp-feel">
+                  <div class="feel-img">
+                    <img src="assets/thermometer.png" alt="Thermometer" />
+                  </div>
+                  <div class="feel-info">
+                    <p>Feels Like</p>
+                    <p>16 °F</p>
+                  </div>
                 </div>
-                <div class="feel-info">
-                  <p>Feels Like</p>
-                  <p>16 °F</p>
-                </div>
-              </div>
-              <div class="temp-humidity">
-                <div class="humidity-img">
-                  <img src="assets/humidity.png" alt="Water Drop" />
-                </div>
-                <div class="humidity-info">
-                  <p>Humidity</p>
-                  <p>72.0 %</p>
-                </div>
-              </div>
-              <div class="temp-rain">
-                <div class="rain-img">
-                  <img src="assets/raindrop.png" alt="Rain Drops" />
-                </div>
-                <div class="rain-info">
-                  <p>Change of Rain</p>
-                  <p>22.0 %</p>
+                <div class="temp-humidity">
+                  <div class="humidity-img">
+                    <img src="assets/humidity.png" alt="Water Drop" />
+                  </div>
+                  <div class="humidity-info">
+                    <p>Humidity</p>
+                    <p>72.0 %</p>
+                  </div>
                 </div>
               </div>
-              <div class="temp-wind">
-                <div class="wind-img">
-                  <img src="assets/wind.png" alt="Wind Icon" />
+              <div>
+                <div class="temp-rain">
+                  <div class="rain-img">
+                    <img src="assets/raindrop.png" alt="Rain Drops" />
+                  </div>
+                  <div class="rain-info">
+                    <p>Chance of Rain</p>
+                    <p>22.0 %</p>
+                  </div>
                 </div>
-                <div class="wind-info">
-                  <p>Wind Speed</p>
-                  <p>11 mph</p>
+                <div class="temp-wind">
+                  <div class="wind-img">
+                    <img src="assets/wind.png" alt="Wind Icon" />
+                  </div>
+                  <div class="wind-info">
+                    <p>Wind Speed</p>
+                    <p>11 mph</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -78,7 +80,7 @@
         <div class="location-info">
           <div class="location-holder">
             <div class="location">
-              <img src="#" alt="Building icon" />
+              <img src="assets/buildings.png" alt="Building icon" />
               <p>Nairobi, KE</p>
             </div>
             <div class="date">
@@ -89,14 +91,18 @@
             </div>
           </div>
           <div class="search-holder">
-            <input type="text" name="search" id="search" />
-            <div class="temp-toggle">
-              <label for="temp-control">Farenheit</label>
-              <input type="checkbox" name="temp" id="temp-control" />
+            <div class="search-box">
+              <input type="text" name="search" id="search" placeholder="Enter Location" />
             </div>
-            <div class="speed-toggle">
-              <label for="speed-control">Farenheit</label>
-              <input type="checkbox" name="speed" id="speed-control" />
+            <div class="toggles">
+              <div class="temp-toggle">
+                <input type="checkbox" name="temp" id="temp-control" />
+                <label for="temp-control">Farenheit</label>
+              </div>
+              <div class="speed-toggle">
+                <input type="checkbox" name="speed" id="speed-control" />
+                <label for="speed-control">Miles</label>
+              </div>
             </div>
           </div>
         </div>
