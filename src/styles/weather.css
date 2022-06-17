@@ -1,9 +1,10 @@
 .weather-info {
   display: flex;
+  justify-content: space-evenly;
 }
 
 .img-holder {
-  margin: 3rem 0 2rem 3rem;
+  margin: 3rem 0 3rem 2rem;
   display: flex;
   width: 475px;
   height: 475px;
@@ -14,18 +15,22 @@
   height: 100%;
   border-radius: 0.5rem;
   object-fit: cover;
-  object-position: 50% 50%; /* Change based on image */
+  object-position: 100% 50%; /* Change based on image */
 }
 
 .info-holder {
   display: flex;
-  margin: 0 auto;
+}
+
+.info-holder img {
+  filter: hue-rotate(0deg) saturate(100%) grayscale(0%);
 }
 
 .top-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: auto 1rem;
 }
 
 .top-info > div {
@@ -46,6 +51,7 @@
 .weather > p {
   margin: 0.5rem 0;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .temp-main {
@@ -90,6 +96,7 @@
 
 .temp-variance > div > p {
   font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 /* Bottom of Weather Info*/
@@ -121,7 +128,8 @@
 .bottom-info > div > div:nth-child(2) > p:nth-child(2) {
   font-size: 1.5rem;
   text-align: center;
-  margin: 0;
+  margin: 0 1rem;
+  white-space: nowrap;
 }
 
 .bottom-info > div > div:nth-child(2) > p:nth-child(1) {
@@ -131,4 +139,78 @@
 
 .bottom-info > div > div:first-child {
   margin-right: 1rem;
+}
+
+@media only screen and (max-width: 1050px) {
+  .holding-box {
+    width: 80%;
+  }
+  .container {
+    align-items: flex-start;
+    padding: 5rem 0;
+    height: auto;
+  }
+
+  .holding-box {
+    height: 100%;
+  }
+
+  .weather-info {
+    flex-direction: column;
+  }
+
+  .img-holder {
+    width: 80%;
+    height: 80%;
+    margin: 2rem auto;
+  }
+
+  .info-holder {
+    flex-direction: column;
+  }
+
+  .top-info {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .top-info > div {
+    margin: auto 1rem;
+  }
+
+  .bottom-info {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .bottom-info > div {
+    flex: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .divider-top,
+  .divider-bot {
+    width: 80%;
+    height: 0.1rem;
+    margin: 2rem auto;
+  }
+
+  .bottom-info > div > div:nth-child(2) {
+    margin: 0;
+  }
+
+  @media only screen and (max-width: 670px) {
+    .top-info {
+      flex-direction: column;
+    }
+    .top-info > div {
+      margin: 1rem auto;
+    }
+
+    .bottom-info {
+      flex-direction: column;
+    }
+  }
 }

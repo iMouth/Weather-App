@@ -1,28 +1,27 @@
 :root {
-  --clear-grad: linear-gradient(to top right, #85cdd8 25%, #d1d9d9); /* aquamarine */
-  --cloudy-grad: linear-gradient(to top right, #597e93 25%, #698181);
-  --rain-grad: linear-gradient(to top right, #5b8288 25%, #95bfbf);
-  --snow-grad: linear-gradient(to top right, #819b9a 25%, #e1e1e1);
-  --drizzle-grad: linear-gradient(to top right, #8893a6 25%, #a6b3c2);
-  --thunderstorm-grad: linear-gradient(to top right, #596073 25%, #a3aed4);
-  --atmosphere-grad: linear-gradient(to top right, #545959 25%, #a5b8c1);
+  --clear-grad: linear-gradient(to top right, #589dc3 25%, #a4cdde); /* aquamarine */
+  --cloudy-grad: linear-gradient(to top right, #49392c 25%, #9c8d8d);
+  --rain-grad: linear-gradient(to top right, #b54d31 25%, #e8c32c);
+  --snow-grad: linear-gradient(to top right, #bb7c5d 0%, #f3f3f6);
+  --drizzle-grad: linear-gradient(to top right, #5f3133 25%, #aaa6a7);
+  --thunderstorm-grad: linear-gradient(to top right, #914c28 25%, #ca7833);
+  --atmosphere-grad: linear-gradient(to top right, #553807 20%, #fed46e);
 }
 
 .container {
-  height: 100vh;
-  width: 100vw;
-  background-image: var(--rain-grad);
+  background-image: var(--clear-grad);
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Urbanist", sans-serif;
+  height: 100vh;
 }
 
 .holding-box {
   box-shadow: 0 0.5rem 1rem 0.8rem #30475e26;
   background-color: #ffffff;
   height: 48rem;
-  width: 60rem;
+  width: auto;
   border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
@@ -31,13 +30,13 @@
 .divider-bot {
   width: 80%;
   height: 0.1rem;
-  background-image: var(--rain-grad);
+  background-image: var(--clear-grad);
   margin: 0 auto;
 }
 
 .divider-top {
   height: 75%;
   width: 0.1rem;
-  background-image: var(--rain-grad);
+  background-image: var(--thunderstorm-grad);
   margin: auto 0;
 }

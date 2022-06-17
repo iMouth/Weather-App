@@ -1,7 +1,9 @@
 .location-info {
   display: flex;
   justify-content: space-between;
-  margin: 2rem 3rem;
+  margin: auto 3rem;
+
+  gap: 3rem;
 }
 
 .location-holder {
@@ -46,12 +48,12 @@
 }
 
 #search {
-  width: calc(100% - 1rem);
+  width: calc(100% - 1rem - 2px);
   height: 2.2rem;
-  margin: 1rem auto;
+  margin: auto;
   padding-left: 1rem;
   box-shadow: 0 0 2px black;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 #search:focus {
@@ -61,6 +63,7 @@
 .toggles {
   display: flex;
   flex-wrap: wrap;
+  padding-top: 1rem;
 }
 
 .toggles > div {
@@ -82,8 +85,9 @@
   background-color: rgb(0, 0, 0);
   border-radius: 2rem;
   position: relative;
-  background-image: var(--rain-grad);
+  background-image: var(--clear-grad);
   box-shadow: 0px 0px 3px 0.5px gray;
+  cursor: pointer;
 }
 
 .toggles input:before {
@@ -108,4 +112,85 @@
 
 .speed-toggle {
   margin: 0 auto;
+}
+
+.search-results {
+  display: none;
+  position: absolute;
+  width: clamp(10rem, 33vw, 20rem);
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+  height: 10rem;
+  overflow: auto;
+  box-shadow: 0 0 2px black;
+  scrollbar-width: none;
+  outline: 1px solid gray;
+  border-radius: 0.2rem;
+}
+
+.search-results::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.search-results > p {
+  margin: 0;
+  padding: 0.7rem 0 0.5rem 1rem;
+  font-size: 1.05rem;
+  border-bottom: 1px solid gray;
+}
+
+.search-results > p:hover {
+  cursor: pointer;
+  background-color: rgb(207, 207, 207);
+}
+
+.search-results > p:active {
+  background-color: rgb(160, 160, 160);
+}
+
+@media only screen and (max-width: 1050px) {
+  .location-info {
+    margin-bottom: 3rem;
+  }
+
+  .location-holder > div:first-child {
+    margin-bottom: 0.8rem;
+  }
+  .location > p {
+    font-size: 1.8rem;
+    white-space: nowrap;
+  }
+
+  .location > img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .toggles {
+    flex-direction: column;
+  }
+
+  .toggles > div {
+    margin: 0.5rem 0;
+  }
+
+  .speed-toggle {
+    margin: 0;
+  }
+
+  .search-box {
+    width: 13rem;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .location-info {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .location > p {
+    font-size: 2rem;
+  }
 }
