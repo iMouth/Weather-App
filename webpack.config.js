@@ -1,15 +1,12 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
   entry: {
     index: "./src/index.js",
-  },
-  devtool: "eval-source-map",
-  devServer: {
-    static: "./dist",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -26,7 +23,6 @@ module.exports = {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "assets/[name][ext]",
-    clean: true,
   },
   module: {
     rules: [
@@ -45,17 +41,7 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-transform-runtime"],
-          },
-        },
       },
     ],
-  },
-  optimization: {
-    runtimeChunk: "single",
   },
 };

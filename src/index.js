@@ -1,9 +1,6 @@
-import "/src/styles/main.css";
+import "../src/styles/main.css";
 import themeObject from "/src/scripts/themes.js";
-import "/src/styles/style.css";
-import "/src/styles/reset.css";
-import "/src/styles/weather.css";
-import "/src/styles/location.css";
+import "../src/styles/weather.css";
 
 const API_KEY = "a7384ac1b9096cc582d9e0c3d465f999";
 const SEARCH_LIMIT = 10;
