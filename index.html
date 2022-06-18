@@ -4,33 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Weather App</title>
-  <link rel="icon" href="cloud.png?032c869b3c27117aa926"><script defer src="runtime.032c869b3c27117aa926.js?032c869b3c27117aa926"></script><script defer src="index.032c869b3c27117aa926.js?032c869b3c27117aa926"></script></head>
+  <link rel="icon" href="cloud.png?0747d82d61d5629d5f6f"><script defer src="runtime.bundle.js?0747d82d61d5629d5f6f"></script><script defer src="index.bundle.js?0747d82d61d5629d5f6f"></script></head>
   <body>
     <div class="container">
       <div class="holding-box">
         <div class="weather-info">
           <div class="img-holder">
-            <img src="assets/road.jpg" alt="Rain picture" />
+            <img id="weather-img" src="assets/camp-fire.jpg" alt="Rain picture" />
           </div>
           <div class="info-holder">
             <div class="top-info">
               <div class="weather">
-                <img src="assets/clouds.gif" alt="weather icon" />
-                <p>scattered clouds</p>
+                <img id="weather-icon" src="assets/clouds.gif" alt="weather icon" />
+                <p id="weather-desc">scattered clouds</p>
               </div>
               <div class="temp">
                 <div class="temp-main">
-                  <p>64</p>
+                  <p id="temperature">64</p>
                   <img src="assets/fahrenheit.gif" alt="temperature icon" />
                 </div>
                 <div class="temp-variance">
                   <div class="temp-low">
                     <img src="assets/arrow.gif" alt="blue down arrow" />
-                    <p>16 °F</p>
+                    <p>
+                      <span id="temp-low">10&nbsp;</span>
+                      <span class="temp-unit">°F</span>
+                    </p>
                   </div>
                   <div class="temp-high">
-                    <p>16 °F</p>
+                    <p>
+                      <span id="temp-high">22&nbsp;</span>
+                      <span class="temp-unit">°F</span>
+                    </p>
                     <img src="assets/arrow.gif" alt="red up arrow" />
                   </div>
                 </div>
@@ -44,7 +51,10 @@
                 </div>
                 <div class="feel-info">
                   <p>Feels Like</p>
-                  <p>16 °F</p>
+                  <p>
+                    <span id="feel-like">86&nbsp;</span>
+                    <span class="temp-unit">°F</span>
+                  </p>
                 </div>
               </div>
               <div class="temp-humidity">
@@ -53,16 +63,16 @@
                 </div>
                 <div class="humidity-info">
                   <p>Humidity</p>
-                  <p>72.0 %</p>
+                  <p><span id="humidity">72.0</span>&nbsp;%</p>
                 </div>
               </div>
               <div class="temp-rain">
                 <div class="rain-img">
                   <img src="assets/drop.gif" alt="Rain Drops" />
                 </div>
-                <div class="rain-info">
-                  <p>Chance of Rain</p>
-                  <p>22.0 %</p>
+                <div class="persipitation-info">
+                  <p>Persipitation</p>
+                  <p><span id="persipitation">22</span>&nbsp;%</p>
                 </div>
               </div>
               <div class="temp-wind">
@@ -71,7 +81,10 @@
                 </div>
                 <div class="wind-info">
                   <p>Wind Speed</p>
-                  <p>11 mph</p>
+                  <p>
+                    <span id="wind-speed">11&nbsp;</span>
+                    <span class="speed-unit">mph</span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -93,24 +106,19 @@
           </div>
           <div class="search-holder">
             <div class="search-box">
-              <input type="text" name="search" id="search" placeholder="Enter Location" />
-              <div class="search-results">
-                <p>Tucson, AZ</p>
-                <p>Nairobi, Kenya</p>
-                <p>Tucson, AZ</p>
-                <p>Nairobi, Kenya</p>
-                <p>Tucson, AZ</p>
-                <p>Nairobi, Kenya</p>
-                <p>Tucson, AZ</p>
-                <p>Nairobi, Kenya</p>
-                <p>Tucson, AZ</p>
-                <p>Nairobi, Kenya</p>
-              </div>
+              <input
+                autocomplete="off"
+                type="text"
+                name="search"
+                id="search"
+                placeholder="Enter Location"
+              />
+              <div class="search-results"></div>
             </div>
             <div class="toggles">
               <div class="temp-toggle">
                 <input type="checkbox" name="temp" id="temp-control" />
-                <label for="temp-control">Farenheit</label>
+                <label for="temp-control">Fahrenheit</label>
               </div>
               <div class="speed-toggle">
                 <input type="checkbox" name="speed" id="speed-control" />
