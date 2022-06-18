@@ -6,10 +6,11 @@
   --drizzle-grad: linear-gradient(to top right, #5f3133 25%, #aaa6a7);
   --thunderstorm-grad: linear-gradient(to top right, #914c28 25%, #ca7833);
   --atmosphere-grad: linear-gradient(to top right, #553807 20%, #fed46e);
+  --dark-grad: radial-gradient(farthest-side, #070707 0%, #af4d06 100%);
 }
 
 .container {
-  background-image: var(--clear-grad);
+  background-image: var(--dark-grad);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,13 +31,13 @@
 .divider-bot {
   width: 80%;
   height: 0.1rem;
-  background-image: var(--clear-grad);
+  background-image: var(--dark-grad);
   margin: 0 auto;
 }
 
 .divider-top {
   height: 75%;
   width: 0.1rem;
-  background-image: var(--thunderstorm-grad);
+  background-image: var(--dark-grad);
   margin: auto 0;
 }

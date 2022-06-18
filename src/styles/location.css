@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   margin: auto 3rem;
-
   gap: 3rem;
 }
 
@@ -21,10 +20,10 @@
   margin: auto 0;
 }
 
-.location p {
-  font-size: 2.2rem;
-  margin: 1rem 0;
-  margin-left: 1rem;
+.location > p {
+  font-size: 1.8rem;
+  margin: 1rem 0 1rem 1rem;
+  width: 400px;
 }
 
 .date > p,
@@ -40,6 +39,7 @@
 
 .search-box {
   width: clamp(10rem, 33vw, 20rem);
+  position: relative;
 }
 
 .search-box > input {
@@ -85,7 +85,7 @@
   background-color: rgb(0, 0, 0);
   border-radius: 2rem;
   position: relative;
-  background-image: var(--clear-grad);
+  background-image: var(--dark-grad);
   box-shadow: 0px 0px 3px 0.5px gray;
   cursor: pointer;
 }
@@ -120,7 +120,7 @@
   width: clamp(10rem, 33vw, 20rem);
   background-color: rgb(255, 255, 255);
   z-index: 10;
-  height: 10rem;
+  max-height: 8rem;
   overflow: auto;
   box-shadow: 0 0 2px black;
   scrollbar-width: none;
@@ -133,8 +133,9 @@
 }
 
 .search-results > p {
+  background-color: rgb(240, 240, 240);
   margin: 0;
-  padding: 0.7rem 0 0.5rem 1rem;
+  padding: 0.7rem 1rem;
   font-size: 1.05rem;
   border-bottom: 1px solid gray;
 }
@@ -153,12 +154,15 @@
     margin-bottom: 3rem;
   }
 
+  .location > p {
+    width: auto;
+  }
+
   .location-holder > div:first-child {
     margin-bottom: 0.8rem;
   }
   .location > p {
     font-size: 1.8rem;
-    white-space: nowrap;
   }
 
   .location > img {
@@ -179,6 +183,10 @@
   }
 
   .search-box {
+    width: 13rem;
+  }
+
+  .search-results {
     width: 13rem;
   }
 }
