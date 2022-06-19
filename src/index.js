@@ -53,6 +53,7 @@ function buildPlaceString(place) {
 
 async function searchClick(e) {
   if (e.key === "Enter") {
+    document.querySelectorAll(".search-results p").forEach((p) => p.remove());
     const city = document.getElementById("search").value;
     let locations = await getLocations(city);
     if (locations.length > 0) {
