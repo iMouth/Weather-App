@@ -17,7 +17,7 @@ let cityInfo = {};
 let finalLocations = {};
 
 function getSearchLocations(city) {
-  return `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${SEARCH_LIMIT}&appid=${API_KEY}`;
+  return `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${SEARCH_LIMIT}&appid=${API_KEY}`;
 }
 
 async function getLocations(city) {
