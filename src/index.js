@@ -24,8 +24,7 @@ document.querySelector(".temp-toggle input").addEventListener("change", (e) => {
 document.querySelector(".speed-toggle input").addEventListener("change", (e) => {
   changeSpeedUnit(cityInfo);
 });
-document.getElementById("search").addEventListener("keypress", searchClick);
-
+document.getElementById("search").addEventListener("keyup", searchClick);
 document.querySelector(".container").style.display = "none";
 
 setCurrentLoctaion();
@@ -72,17 +71,23 @@ async function getCoords() {
 
 window.addEventListener("click", (e) => {
   if (!document.querySelector(".search-results").contains(e.target)) {
-    showToggles();
+    document.querySelectorAll(".search-results p").forEach((p) => p.remove());
+    document.querySelector(".toggles").style.opacity = "1";
+    document.querySelector(".toggles").style.visibility = "visible";
   }
 });
 
 async function searchClick(e) {
-  if (e.key === "Enter") {
+  const key = String.fromCharCode(e.keyCode);
+  const exp = /^[\w.]+$/i;
+  if (e.key === "Enter" || e.key === "Backspace" || key.match(exp)) {
     document.querySelectorAll(".search-results p").forEach((p) => p.remove());
     const city = document.getElementById("search").value;
-    let locations = await getLocations(city, API_KEY);
-    if (locations.length > 0) {
-      showResults(locations);
+    if (city) {
+      let locations = await getLocations(city, API_KEY);
+      if (locations.length > 0) {
+        showResults(locations);
+      }
     }
   }
 }
