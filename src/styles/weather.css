@@ -5,13 +5,11 @@
 .img-holder {
   margin: 3rem 0 3rem 2rem;
   display: flex;
-  width: 475px;
-  height: 475px;
 }
 
 .img-holder > img {
-  width: 100%;
-  height: 100%;
+  width: 475px;
+  height: 475px;
   border-radius: 0.5rem;
   object-fit: cover;
   object-position: 0% 50%;
@@ -19,6 +17,7 @@
 
 .info-holder {
   display: flex;
+  width: 30rem;
 }
 
 .info-holder img {
@@ -29,7 +28,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: auto 1rem;
+  margin: auto 0.5rem;
+  width: 13rem;
 }
 
 .top-info > div {
@@ -76,11 +76,18 @@
 
 .temp-variance {
   display: flex;
+  justify-content: space-between;
 }
 
 .temp-variance > div {
   display: flex;
-  margin: 0 1rem;
+}
+
+.temp-variance > div:first-child {
+  margin-left: 0.5rem;
+}
+.temp-variance > div:last-child {
+  margin-right: 0.5rem;
 }
 
 .temp-variance > div > img {
@@ -102,7 +109,7 @@
 .bottom-info {
   display: flex;
   flex-direction: column;
-  margin: auto 2rem;
+  margin: auto;
 }
 
 .bottom-info > div {
@@ -122,6 +129,7 @@
 
 .bottom-info > div > div:nth-child(2) {
   margin: auto;
+  width: 6rem;
 }
 
 .bottom-info > div > div:nth-child(2) > p:nth-child(2) {
@@ -143,16 +151,15 @@
 @media only screen and (max-width: 1050px), only screen and (max-height: 850px) {
   .holding-box {
     width: 80%;
+    height: 100%;
   }
 
   .container {
-    align-items: flex-start;
     padding: 5rem 0;
     height: auto;
   }
-
-  .holding-box {
-    height: 100%;
+  .weather {
+    width: 11.75rem;
   }
 
   .weather-info {
@@ -162,32 +169,77 @@
   .img-holder {
     width: 80%;
     height: 80%;
-    margin: 3rem auto;
+    margin: 3rem auto 2rem;
+  }
+
+  .img-holder > img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .temp {
+    width: auto;
+  }
+
+  .temp-variance > div {
+    margin: 1rem 0;
+    width: auto;
+  }
+
+  .temp-variance > div:first-child {
+    margin-left: 0;
+  }
+
+  .temp-variance > div:last-child {
+    margin-right: 0;
+  }
+
+  .temp-variance > div > p {
+    width: 3rem;
+  }
+
+  .temp-variance > div > p:first-child {
+    margin: auto 0 auto 1rem;
+    text-align: end;
+  }
+
+  .temp-variance > div > p:last-child {
+    margin: auto 1rem auto 0;
   }
 
   .info-holder {
     flex-direction: column;
+    width: auto;
+  }
+
+  .temp-main {
+    margin-top: 2rem;
   }
 
   .top-info {
     flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
+    width: auto;
+    margin: auto 2rem;
   }
 
   .top-info > div {
-    margin: auto 1rem;
+    margin: 0;
   }
 
   .bottom-info {
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
+    margin: 0 12%;
   }
 
   .bottom-info > div {
     flex: 50%;
     align-items: center;
-    justify-content: space-evenly;
+    margin: 0 auto;
+    justify-content: center;
   }
 
   .divider-top,
@@ -195,6 +247,10 @@
     width: 80%;
     height: 0.1rem;
     margin: 2rem auto;
+  }
+
+  .weather > p {
+    white-space: nowrap;
   }
 
   .bottom-info > div > div:nth-child(2) {
@@ -206,7 +262,7 @@
       flex-direction: column;
     }
     .top-info > div {
-      margin: 1rem auto;
+      margin: 0.5rem auto;
     }
 
     .bottom-info {

@@ -1,6 +1,5 @@
 import "../src/styles/main.css";
 import themeObject from "/src/scripts/themes.js";
-import "../src/styles/weather.css";
 
 const API_KEY = "a7384ac1b9096cc582d9e0c3d465f999";
 const SEARCH_LIMIT = 10;
@@ -18,14 +17,7 @@ let cityInfo = {};
 let finalLocations = {};
 
 function getSearchLocations(city) {
-  return (
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
-    city +
-    "&limit=" +
-    SEARCH_LIMIT +
-    "&appid=" +
-    API_KEY
-  );
+  return `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${SEARCH_LIMIT}&appid=${API_KEY}`;
 }
 
 async function getLocations(city) {
@@ -168,34 +160,67 @@ async function setWeatherInfo(info) {
 }
 
 function getSearchCity(city) {
-  return (
-    "https://api.openweathermap.org/data/2.5/onecall?" +
-    "lat=" +
-    city.latitude +
-    "&lon=" +
-    city.longitude +
-    "&units=imperial" +
-    "&exclude=minutely,alerts" +
-    "&appid=" +
-    API_KEY
-  );
+  return `https://api.openweathermap.org/data/2.5/onecall?lat=${city.latitude}&lon=${city.longitude}&units=imperial&exclude=minutely,alerts&appid=${API_KEY}`;
 }
 
-async function setInitalLocation() {
-  let search = await getSearchCity({
-    latitude: 25.7742,
-    longitude: -80.1936,
-  });
+async function setInitalLocation(coords, name) {
+  let search = await getSearchCity(coords);
   cityInfo = await getCityInfo(search);
-
-  document.querySelector(".location p").textContent = "Miami, Florida, US";
+  document.querySelector(".location p").textContent = name;
   clearTimeout(timeoutDateTime);
   setDateTime(cityInfo.timezone);
   setWeatherInfo(cityInfo);
   setWeatherTheme(cityInfo.weather);
 }
 
-setInitalLocation();
+async function getCityName(search) {
+  try {
+    let cityCall = await fetch(search, { mode: "cors" });
+    let cityJSON = await cityCall.json();
+    let info = {
+      city: cityJSON.name,
+      country: cityJSON.sys.country,
+    };
+    return info;
+  } catch (err) {
+    console.log("Error: " + err.message);
+  }
+}
+
+//TODO: Perserve toggle
+
+async function getCoords() {
+  const pos = await new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+
+  return {
+    longitude: pos.coords.longitude,
+    latitude: pos.coords.latitude,
+  };
+}
+
+document.querySelector(".container").style.display = "none";
+async function start() {
+  await setInitalLocation(
+    {
+      latitude: 25.7742,
+      longitude: -80.1936,
+    },
+    "Miami, Flordia, US"
+  );
+  document.querySelector(".container").style.display = "flex";
+  try {
+    const coords = await getCoords();
+    let searchName = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=a7384ac1b9096cc582d9e0c3d465f999`;
+    let cityNameInfo = await getCityName(searchName);
+    await setInitalLocation(coords, cityNameInfo.city + ", " + cityNameInfo.country);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+start();
 
 async function cityClick(e) {
   const place = e.target.textContent;
@@ -292,7 +317,7 @@ function tempUnit(unit, src, unitFull) {
     tempFeel.textContent = Math.round(convertToC(cityInfo.tempFeel));
     toggleName.textContent = "Celcius";
   } else {
-    console.log("unitFull not celcius or farenheit");
+    console.log("unit not celcius or farenheit");
   }
   units.temp = unitFull;
 }
