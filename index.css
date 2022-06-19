@@ -832,7 +832,7 @@ html {
   background-color: rgb(160, 160, 160);
 }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1050px), only screen and (max-height: 850px) {
   .location-info {
     margin-bottom: 3rem;
   }
