@@ -758,10 +758,12 @@ html {
 .toggles label {
   font-size: 1.2rem;
   text-align: center;
+  pointer-events: none;
 }
 
 .toggles input {
   -webkit-appearance: none;
+  caret-color: transparent;
   outline: none;
   width: 40px;
   height: 17px;
