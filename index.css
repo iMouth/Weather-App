@@ -445,7 +445,7 @@ html {
 
 .weather > p {
   margin: 0.5rem 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -645,10 +645,6 @@ html {
     margin: 2rem auto;
   }
 
-  .weather > p {
-    white-space: nowrap;
-  }
-
   .bottom-info > div > div:nth-child(2) {
     margin: 0;
   }
@@ -663,6 +659,14 @@ html {
 
     .bottom-info {
       flex-direction: column;
+    }
+
+    .container {
+      padding: 2rem 0;
+    }
+
+    .holding-box {
+      width: 90%;
     }
   }
 
