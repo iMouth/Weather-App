@@ -62,7 +62,6 @@ async function setWeatherInfo(info) {
 function showToggles() {
   document.getElementById("search").value = "";
   document.querySelectorAll(".search-results p").forEach((p) => p.remove());
-  document.querySelector(".toggles").style.opacity = "1";
   document.querySelector(".toggles").style.visibility = "visible";
 }
 
@@ -77,7 +76,6 @@ function displayResults(loc, cityClick) {
     results.appendChild(p);
   });
   results.style.display = "block";
-  document.querySelector(".toggles").style.opacity = "0";
   document.querySelector(".toggles").style.visibility = "hidden";
 }
 

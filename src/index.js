@@ -72,7 +72,6 @@ async function getCoords() {
 window.addEventListener("click", (e) => {
   if (!document.querySelector(".search-results").contains(e.target)) {
     document.querySelectorAll(".search-results p").forEach((p) => p.remove());
-    document.querySelector(".toggles").style.opacity = "1";
     document.querySelector(".toggles").style.visibility = "visible";
   }
 });
@@ -149,13 +148,13 @@ function getSearchCity(city) {
 }
 
 async function cityClick(e) {
+  showToggles();
   const place = e.target.textContent;
   document.querySelector(".location p").textContent = place;
 
   let search = getSearchCity(finalLocations[place]);
   cityInfo = await getCityInfo(search);
 
-  showToggles();
   setDateTime(cityInfo.timezone);
   setWeatherInfo(cityInfo);
   setWeatherTheme(cityInfo.weather);
