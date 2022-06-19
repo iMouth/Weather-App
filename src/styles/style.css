@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Orbitron&family=Urbanist:wght@300;400;700&display=swap");
+
 :root {
   --clear-grad: linear-gradient(to top right, #589dc3 25%, #a4cdde); /* aquamarine */
   --cloudy-grad: linear-gradient(to top right, #49392c 25%, #9c8d8d);

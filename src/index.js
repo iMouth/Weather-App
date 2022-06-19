@@ -1,4 +1,4 @@
-import "../src/styles/main.css";
+import "./styles/main.css";
 import themeObject from "/src/scripts/themes.js";
 
 const API_KEY = "a7384ac1b9096cc582d9e0c3d465f999";
@@ -80,6 +80,7 @@ function showResults(locations) {
   });
   results.style.display = "block";
   document.querySelector(".toggles").style.opacity = "0";
+  document.querySelector(".toggles").style.visibility = "hidden";
 }
 
 async function setWeatherTheme(weather) {
@@ -140,13 +141,26 @@ async function setTheme(info) {
 
 async function setWeatherInfo(info) {
   document.getElementById("weather-desc").textContent = info.weatherDesc;
-  document.getElementById("temperature").textContent = Math.round(info.temp);
-  document.getElementById("temp-low").textContent = Math.round(info.tempMin);
-  document.getElementById("temp-high").textContent = Math.round(info.tempMax);
-  document.getElementById("feel-like").textContent = Math.round(info.tempFeel);
   document.getElementById("humidity").textContent = Math.round(info.humidity);
   document.getElementById("persipitation").textContent = Math.round(info.persipitation * 100);
-  document.getElementById("wind-speed").textContent = Math.round(info.windSpeed);
+
+  if (units.temp === "fahrenheit") {
+    document.getElementById("temperature").textContent = Math.round(info.temp);
+    document.getElementById("temp-low").textContent = Math.round(info.tempMin);
+    document.getElementById("temp-high").textContent = Math.round(info.tempMax);
+    document.getElementById("feel-like").textContent = Math.round(info.tempFeel);
+  } else {
+    document.getElementById("temperature").textContent = Math.round(convertToC(info.temp));
+    document.getElementById("temp-low").textContent = Math.round(convertToC(info.tempMin));
+    document.getElementById("temp-high").textContent = Math.round(convertToC(info.tempMax));
+    document.getElementById("feel-like").textContent = Math.round(convertToC(info.tempFeel));
+  }
+
+  if (units.speed === "mph") {
+    document.getElementById("wind-speed").textContent = Math.round(info.windSpeed);
+  } else {
+    document.getElementById("wind-speed").textContent = Math.round(convertToKmh(info.windSpeed));
+  }
 
   const temp = info.tempFeel;
   const tempIcon = document.querySelector(".feel-img img");
@@ -187,8 +201,6 @@ async function getCityName(search) {
   }
 }
 
-//TODO: Perserve toggle
-
 async function getCoords() {
   const pos = await new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -226,14 +238,14 @@ async function cityClick(e) {
   const place = e.target.textContent;
   let search = await getSearchCity(finalLocations[place]);
   cityInfo = await getCityInfo(search);
-  document.getElementById("search").value = "";
   document.querySelector(".location p").textContent = place;
+  document.getElementById("search").value = "";
   document.querySelectorAll(".search-results p").forEach((p) => p.remove());
   document.querySelector(".toggles").style.opacity = "1";
+  document.querySelector(".toggles").style.visibility = "visible";
 
   clearTimeout(timeoutDateTime);
   setDateTime(cityInfo.timezone);
-  console.log(cityInfo);
   setWeatherInfo(cityInfo);
   setWeatherTheme(cityInfo.weather);
 }
@@ -303,7 +315,6 @@ function tempUnit(unit, src, unitFull) {
 
   tempVars.forEach((tempVar) => (tempVar.textContent = unit));
   tempIcon.src = src;
-
   if (unitFull === "fahrenheit") {
     temperature.textContent = Math.round(cityInfo.temp);
     tempLow.textContent = Math.round(cityInfo.tempMin);
@@ -351,3 +362,12 @@ function convertToKmh(miles) {
 
 document.querySelector(".temp-toggle input").addEventListener("change", changeTempUnit);
 document.querySelector(".speed-toggle input").addEventListener("change", changeSpeedUnit);
+
+window.addEventListener("click", (e) => {
+  if (!document.querySelector(".search-results").contains(e.target)) {
+    document.querySelectorAll(".search-results p").forEach((p) => p.remove());
+    document.querySelector(".toggles").style.opacity = "1";
+    document.getElementById("search").value = "";
+    document.querySelector(".toggles").style.visibility = "visible";
+  }
+});
