@@ -28,7 +28,7 @@ async function setTheme(info) {
 async function setWeatherInfo(info) {
   document.getElementById("weather-desc").textContent = info.weatherDesc;
   document.getElementById("humidity").textContent = Math.round(info.humidity);
-  document.getElementById("persipitation").textContent = Math.round(info.persipitation * 100);
+  document.getElementById("precipitation").textContent = Math.round(info.precipitation * 100);
 
   if (units.temp === "fahrenheit") {
     document.getElementById("temperature").textContent = Math.round(info.temp);
@@ -132,11 +132,10 @@ function convertToC(farenheit) {
 }
 
 async function changeSpeedUnit(cityInfo) {
-  console.log(cityInfo);
   const speedUnit = document.querySelector(".speed-unit");
   const toggleName = document.querySelector(".speed-toggle label");
   const speed = document.getElementById("wind-speed");
-  console.log(cityInfo);
+
   if (units.speed === "mph") {
     speedUnit.textContent = "km/h";
     units.speed = "km/h";

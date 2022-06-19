@@ -6,7 +6,7 @@ async function getCityInfo(search) {
   try {
     let cityCall = await fetch(search, { mode: "cors" });
     let cityJSON = await cityCall.json();
-    console.log(cityJSON);
+
     let info = {
       temp: cityJSON.current.temp,
       tempMax: cityJSON.daily[0].temp.max,
@@ -19,7 +19,7 @@ async function getCityInfo(search) {
       timezone: cityJSON.timezone_offset,
     };
     const hour = getDateTime(info.timezone).getHours();
-    info.persipitation = cityJSON.hourly[hour].pop;
+    info.precipitation = cityJSON.hourly[hour].pop;
     info.hour = hour;
     return info;
   } catch (err) {
